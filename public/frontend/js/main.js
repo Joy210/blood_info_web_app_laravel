@@ -61,3 +61,45 @@ $(document).ready(function() {
     });
 });
 // GET UPAZILAS
+
+// FETCH USER DATA
+$(document).ready(function() {
+    $.ajax({
+        url: "/fetch-users/",
+        type: "GET",
+        dataType: "JSON",
+        success: function(data) {
+            console.log(data);
+
+            var output = "";
+            output = data.map(user => {
+                return `
+                        <div class="col-4">
+                            <ul class="list-group">
+                                <li class="list-group-item">
+                                    <span class="font-weight-bold">Name:</span> ${user.name}
+                                </li>
+                                <li class="list-group-item">
+                                    <span class="font-weight-bold">Mobile No.:</span> ${user.mobile_no}
+                                </li>
+                                <li class="list-group-item">
+                                    <span class="font-weight-bold">E-mail:</span> ${user.email}
+                                </li>
+                                <li class="list-group-item">
+                                    <span class="font-weight-bold">Blood Group:</span> ${user.blood_group}
+                                </li>
+                                <li class="list-group-item">
+                                    <a class="btn btn-primary btn-sm w-100" href="" id="${user.id}">Book Now</a>
+                                </li>
+                            </ul>
+                        </div> 
+                    `;
+            });
+            $("#users-info").html(output);
+        },
+        error: function() {
+            alert("Could not find any uses!");
+        }
+    });
+});
+// FETCH USER DATA

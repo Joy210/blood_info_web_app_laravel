@@ -19,7 +19,11 @@ Route::get('/', 'GeoLocationController@index');
 Route::get('/get-district/{id}', 'GeoLocationController@get_district')->name('get_district');
 Route::get('/get-upazila/{id}', 'GeoLocationController@get_upazila')->name('get_upazila');
 
-Route::get('/find-user-by-district-or-upazila/{id}', 'GeoLocationController@find_user_by_district_or_upazila');
+Route::get('/fetch-users', 'GeoLocationController@fetch_users');
+Route::get('/find-user-by-division/{id}', 'GeoLocationController@find_user_by_division');
+Route::get('/find-user-by-district/{id}', 'GeoLocationController@find_user_by_district');
+Route::get('/find-user-by-upazila/{id}', 'GeoLocationController@find_user_by_upazila');
+
 
 /////////////////////////////////////////////////////////////////////
 Auth::routes();
