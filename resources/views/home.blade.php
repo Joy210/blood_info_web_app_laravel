@@ -42,7 +42,7 @@
         </div>
         <div class="card-body">
             <div class="row" id="users-info"></div>
-            Show Users Informations...
+            {{-- Show Users Informations... --}}
         </div>
     </div>
 </div>
