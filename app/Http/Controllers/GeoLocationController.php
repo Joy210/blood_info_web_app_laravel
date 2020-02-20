@@ -39,14 +39,13 @@ class GeoLocationController extends Controller
 
     public function fetch_users(){
 
-        // $geo_divisions = DB::table('geo_divisions');
-        // $users = DB::table('users')->where('users.division', 'geo_divisions.id')
         $users = DB::table('users')
-                // ->leftjoin('geo_divisions', 'users.division', '=', 'geo_divisions.id')
+                ->leftjoin('geo_divisions', 'users.division', '=', 'geo_divisions.id')
                 // ->leftjoin('geo_districts', 'users.district', '=', 'geo_districts.id')
                 // ->leftjoin('geo_upazilas', 'users.upazila', '=', 'geo_upazilas.id')
-                ->orderBy('created_at', 'desc')
+                ->orderBy('users.created_at', 'desc')
                 ->get();
+                //  dd($users);
         return json_encode($users);
 
     }

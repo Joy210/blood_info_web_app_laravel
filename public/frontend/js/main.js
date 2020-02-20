@@ -89,6 +89,9 @@ $(document).ready(function() {
                                     <span class="font-weight-bold">Blood Group:</span> ${user.blood_group}
                                 </li>
                                 <li class="list-group-item">
+                                    <span class="font-weight-bold">Division:</span> ${user.division_name_eng}
+                                </li>
+                                <li class="list-group-item">
                                     <a class="btn btn-primary btn-sm w-100" href="" id="${user.id}">Book Now</a>
                                 </li>
                             </ul>
@@ -98,7 +101,7 @@ $(document).ready(function() {
             $("#users-info").html(output);
         },
         error: function() {
-            alert("Could not find any uses!");
+            alert("Could not find any users!");
         }
     });
 });

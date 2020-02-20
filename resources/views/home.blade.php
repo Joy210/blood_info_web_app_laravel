@@ -89,7 +89,7 @@
                                             <span class="font-weight-bold">E-mail:</span> ${user.email}
                                         </li>
                                         <li class="list-group-item">
-                                            <span class="font-weight-bold">Blood Group:</span> ${user.division}
+                                            <span class="font-weight-bold">Division:</span> ${user.division_name_eng}
                                         </li>
                                         <li class="list-group-item">
                                             <a class="btn btn-primary btn-sm w-100" href="" id="${user.id}">Book Now</a>
