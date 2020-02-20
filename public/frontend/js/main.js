@@ -74,7 +74,7 @@ $(document).ready(function() {
             var output = "";
             output = data.map(user => {
                 return `
-                        <div class="col-4">
+                        <div class="col-4 mb-4">
                             <ul class="list-group">
                                 <li class="list-group-item">
                                     <span class="font-weight-bold">Name:</span> ${user.name}

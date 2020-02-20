@@ -28,14 +28,14 @@
                 <div class="col-3">
                     <select name="blood_group" id="blood_group" class="custom-select">
                         <option value="0">Select Blood Group</option>
-                        <option value="1">A+</option>
-                        <option value="2">A-</option>
-                        <option value="3">B+</option>
-                        <option value="4">B-</option>
-                        <option value="5">O+</option>
-                        <option value="6">O-</option>
-                        <option value="7">AB+</option>
-                        <option value="8">AB-</option>
+                        <option value="A+">A+</option>
+                        <option value="A-">A-</option>
+                        <option value="B+">B+</option>
+                        <option value="B-">B-</option>
+                        <option value="O+">O+</option>
+                        <option value="O-">O-</option>
+                        <option value="AB+">AB+</option>
+                        <option value="AB-">AB-</option>
                     </select>
                 </div>
             </div>
@@ -56,6 +56,60 @@
 
 <script>
     $(document).ready(function(){
+
+        $('#blood_group').on('change', function(e){
+            const blood = $(this).val();
+            // console.log(blood);
+
+            $.ajax({
+                url: '/fetch-users/',
+                type: 'GET',
+                dataType: 'JSON',
+                success: function(data){
+
+                    // console.log(data.blood_group);
+
+                    var blood_group = '';
+                    
+                    data.forEach(user => {
+                        
+                        if(user.blood_group == blood){
+                            console.log(user.blood_group);
+                            
+                            blood_group += `
+                                <div class="col-4">
+                                    <ul class="list-group">
+                                        <li class="list-group-item">
+                                            <span class="font-weight-bold">Name:</span> ${user.name}
+                                        </li>
+                                        <li class="list-group-item">
+                                            <span class="font-weight-bold">Mobile No.:</span> ${user.mobile_no}
+                                        </li>
+                                        <li class="list-group-item">
+                                            <span class="font-weight-bold">E-mail:</span> ${user.email}
+                                        </li>
+                                        <li class="list-group-item">
+                                            <span class="font-weight-bold">Blood Group:</span> ${user.division}
+                                        </li>
+                                        <li class="list-group-item">
+                                            <a class="btn btn-primary btn-sm w-100" href="" id="${user.id}">Book Now</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            `;
+                        }
+                    });
+                    $('#users-info').html(blood_group);
+
+                    blood_group = '';
+                },
+                error: function(){
+                    alert("User Not Found!")
+                }
+            })
+
+        });
+
 
         // get users by divisions
         $('#divisions').on('change', function() {
