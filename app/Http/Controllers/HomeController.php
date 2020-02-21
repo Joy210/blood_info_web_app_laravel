@@ -35,7 +35,15 @@ class HomeController extends Controller
                 ->first();
         
 
-        return view('user.profile', compact('user'));
+        $u_name = Auth::user()->name;
+        $notifications = User::where('users.name', $u_name)
+                ->leftjoin('notifications', 'users.name', '=', 'notifications.user_name')
+                ->get();
+
+        
+        // dd($notifications->toArray());
+
+        return view('user.profile', compact('user', 'notifications'));
     }
 
     public function editProfile($id)

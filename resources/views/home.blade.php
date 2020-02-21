@@ -83,28 +83,26 @@
                                             <span class="font-weight-bold">Name:</span> ${user.name}
                                         </li>
                                         <li class="list-group-item">
-                                            <span class="font-weight-bold">Mobile No.:</span> ${user.mobile_no}
-                                        </li>
-                                        <li class="list-group-item">
                                             <span class="font-weight-bold">E-mail:</span> ${user.email}
                                         </li>
                                         <li class="list-group-item">
-                                            <span class="font-weight-bold">Division:</span> ${user.division_name_eng}
+                                            ${user.upazila_name_eng}, ${user.district_name_eng}, ${user.division_name_eng}
                                         </li>
                                         <li class="list-group-item">
-                                            <a class="btn btn-primary btn-sm w-100" href="" id="${user.id}">Book Now</a>
+                                            <a class="btn btn-primary btn-sm w-100" id="${user.id}">Book Now</a>
                                         </li>
                                     </ul>
                                 </div>
                             `;
                         }
                     });
+
                     $('#users-info').html(blood_group);
 
                     blood_group = '';
                 },
                 error: function(){
-                    alert("User Not Found!")
+                    alert("User Not Found!");
                 }
             })
 

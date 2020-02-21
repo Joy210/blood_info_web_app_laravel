@@ -98,6 +98,12 @@
 
     <script src="{{asset('frontend/js/main.js')}}"></script>
 
+
+    <script>
+        $(function () {
+            $('[data-toggle="tooltip"]').tooltip()
+        })
+    </script>
     @stack('javascripts')
 
 </body>

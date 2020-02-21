@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="container">
-    <div class="row justify-content-center">
+    <div class="row">
         <div class="col-md-8">
             <div class="card">
                 <div class="card-header">
@@ -16,6 +16,8 @@
                     <div class="row">
                         <div class="col-4">
                             <img src="{{asset('uploads/avatar').'/'.$user->image}}" alt="" class="card-img top">
+
+
                         </div>
                         <div class="col-8">
                             <ul class="list-group">
@@ -46,6 +48,33 @@
                 </div>
             </div>
         </div>
+
+        <div class="col-md-4">
+            <div class="card notification">
+                <div class="card-header">
+                    <h4 class="mb-0">Notifications</h4>
+                </div>
+                <div class="card-body p-0">
+                    <ul class="">
+                        @foreach ($notifications as $item)
+                        <li class="">
+                            <a class="d-block " href="{{url('show-msg').'/'.$item->id}}" data-toggle="tooltip"
+                                data-placement="top" title="{{$item->message}}">
+                                {{Str::limit($item->message, 40)}}
+                            </a>
+                        </li>
+                        @endforeach
+                    </ul>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
+
+
 @endsection
+
+@push('javascripts')
+
+
+@endpush

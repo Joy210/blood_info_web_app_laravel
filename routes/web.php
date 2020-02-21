@@ -4,11 +4,6 @@
 |--------------------------------------------------------------------------
 | Web Routes
 |--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
 */
 
 Route::get('/', function () {
@@ -24,8 +19,12 @@ Route::get('/find-user-by-division/{id}', 'GeoLocationController@find_user_by_di
 Route::get('/find-user-by-district/{id}', 'GeoLocationController@find_user_by_district');
 Route::get('/find-user-by-upazila/{id}', 'GeoLocationController@find_user_by_upazila');
 
+Route::get('/booking-user/{id}', 'NotificationController@booking_user');
+Route::post('send-msg', 'NotificationController@send_msg');
+Route::get('show-msg/{id}', 'NotificationController@show');
+Route::post('confirm-booking/{id}', 'NotificationController@confirm_booking');
 
-/////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////////
 Auth::routes();
 Route::get('/profile', 'HomeController@index')->name('user.profile');
 Route::get('/profile/edit/{id}', 'HomeController@editProfile')->name('user.editProfile');

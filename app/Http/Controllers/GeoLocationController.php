@@ -41,8 +41,8 @@ class GeoLocationController extends Controller
 
         $users = DB::table('users')
                 ->leftjoin('geo_divisions', 'users.division', '=', 'geo_divisions.id')
-                // ->leftjoin('geo_districts', 'users.district', '=', 'geo_districts.id')
-                // ->leftjoin('geo_upazilas', 'users.upazila', '=', 'geo_upazilas.id')
+                ->leftjoin('geo_districts', 'users.district', '=', 'geo_districts.id')
+                ->leftjoin('geo_upazilas', 'users.upazila', '=', 'geo_upazilas.id')
                 ->orderBy('users.created_at', 'desc')
                 ->get();
                 //  dd($users);

@@ -1,0 +1,30 @@
+a {
+    outline: none;
+    color: #626262;
+    text-decoration: none;
+}
+
+.notification ul {
+    margin: 0;
+    padding: 0 34px;
+}
+
+.notification ul li {
+    /* padding: 0 20px; */
+    list-style: number;
+    line-height: 40px;
+    border-bottom: 1px solid #f0f0f0;
+    color: #626262;
+}
+.notification ul li:last-child {
+    border-bottom: 0;
+}
+
+.list-group li {
+    line-height: 40px;
+    padding: 0 15px;
+}
+
+.list-group li .btn {
+    margin-bottom: 3.2px;
+}
