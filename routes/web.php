@@ -19,7 +19,7 @@ Route::get('/find-user-by-division/{id}', 'GeoLocationController@find_user_by_di
 Route::get('/find-user-by-district/{id}', 'GeoLocationController@find_user_by_district');
 Route::get('/find-user-by-upazila/{id}', 'GeoLocationController@find_user_by_upazila');
 
-Route::get('/booking-user/{id}', 'NotificationController@booking_user');
+Route::get('booking-user/{id}', 'NotificationController@booking_user');
 Route::post('send-msg', 'NotificationController@send_msg');
 Route::get('show-msg/{id}', 'NotificationController@show');
 Route::post('confirm-booking/{id}', 'NotificationController@confirm_booking');

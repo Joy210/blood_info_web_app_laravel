@@ -10,16 +10,15 @@ use App\Notification;
 
 class NotificationController extends Controller
 {
+
+    public function __construct() {
+        $this->middleware('auth');
+    }
+
+
     public function booking_user($id){
 
         $user = User::find($id);
-        // dd($user->toArray());
-
-        // $msg = new Notification;
-
-        // $msg->user_id = $request->user_id;
-        // $msg->message = $request->message;
-
 
         return view('notification.send', compact('user'));
     }
@@ -29,6 +28,8 @@ class NotificationController extends Controller
 
         // $user = User::find($id);
         // dd($user->toArray());
+
+
 
         $msg = new Notification;
 
