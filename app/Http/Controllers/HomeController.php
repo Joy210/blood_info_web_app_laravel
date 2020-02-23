@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
 use App\User;
+use App\Notification;
 
 class HomeController extends Controller
 {
@@ -28,22 +29,31 @@ class HomeController extends Controller
     public function index()
     {
         $user_id = Auth::user()->id;
+
         $user = User::where('users.id', $user_id)
                 ->leftjoin('geo_divisions', 'users.division', '=', 'geo_divisions.id')
                 ->leftjoin('geo_districts', 'users.district', '=', 'geo_districts.id')
                 ->leftjoin('geo_upazilas', 'users.upazila', '=', 'geo_upazilas.id')
                 ->first();
         
-
-        $u_name = Auth::user()->name;
-        $notifications = User::where('users.name', $u_name)
-                ->leftjoin('notifications', 'users.name', '=', 'notifications.user_name')
+        $notifications = User::where('users.id', $user_id)
+                ->leftjoin('notifications', 'users.id', '=', 'notifications.donor_id')
                 ->get();
+
+        // $donors = Notification::where('booker_id', $user_id)
+        //         ->join('users', 'users.id', '=', 'notifications.donor_id')
+        //         ->get();
+                
+        $donors = Notification::where('booker_id', $user_id)
+                ->join('users', 'users.id', '=', 'notifications.donor_id')
+                ->get();
+
+                // dd($donors);
 
         
         // dd($notifications->toArray());
 
-        return view('user.profile', compact('user', 'notifications'));
+        return view('user.profile', compact('user', 'notifications', 'donors'));
     }
 
     public function editProfile($id)

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 use App\User;
 use App\Notification;
@@ -29,11 +30,12 @@ class NotificationController extends Controller
         // $user = User::find($id);
         // dd($user->toArray());
 
-
+        $user_id = Auth::user()->id;
 
         $msg = new Notification;
 
-        $msg->user_name = $request->user_name;
+        $msg->donor_id = $request->donor_id;
+        $msg->booker_id = $user_id;
         $msg->message = $request->message;
         $msg->booking_date = $request->booking_date;
 
@@ -53,6 +55,7 @@ class NotificationController extends Controller
         return view('notification.show', compact('message'));
     }
     
+
     public function confirm_booking($id){
         
         $notification_id = Notification::find($id);

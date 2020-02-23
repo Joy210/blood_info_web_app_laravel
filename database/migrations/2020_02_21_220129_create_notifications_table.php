@@ -15,7 +15,8 @@ class CreateNotificationsTable extends Migration
     {
         Schema::create('notifications', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('user_name');
+            $table->integer('booker_id');
+            $table->integer('donor_id');
             $table->date('booking_date')->nullable();
             $table->text('message');
             $table->boolean('status')->default(0);
