@@ -21,7 +21,7 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 
     <link rel="stylesheet" href="{{asset('frontend/css/main.css')}}">
-
+    {{-- <link href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css" rel="stylesheet"> --}}
     @stack('css')
 
 </head>
@@ -95,6 +95,7 @@
 
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"
         integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+    {{-- <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script> --}}
 
     <script src="{{asset('frontend/js/main.js')}}"></script>
 
@@ -104,6 +105,31 @@
             $('[data-toggle="tooltip"]').tooltip()
         })
     </script>
+
+    {{-- <script>
+        @if(Session::has('message'))
+            var type="{{Session::get('alert-type','info')}}"
+
+
+    switch(type){
+    case 'info':
+    toastr.info("{{ Session::get('message') }}");
+    break;
+    case 'success':
+    toastr.success("{{ Session::get('message') }}");
+    break;
+    case 'warning':
+    toastr.warning("{{ Session::get('message') }}");
+    break;
+    case 'error':
+    toastr.error("{{ Session::get('message') }}");
+    break;
+    }
+    @endif
+    </script> --}}
+
+
+
     @stack('javascripts')
 
 </body>

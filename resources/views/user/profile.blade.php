@@ -31,7 +31,7 @@
                                     <span class="font-weight-bold">E-mail:</span> {{$user->email}}
                                 </li>
                                 <li class="list-group-item">
-                                    <span class="font-weight-bold">Blood Group:</span> {{$user->blood_group}}
+                                    <span class="font-weight-bold">Blood Group:</span> {{$user->blood_name}}
                                 </li>
                                 <li class="list-group-item">
                                     <span class="font-weight-bold">Division:</span> {{$user->division_name_eng}}
