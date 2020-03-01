@@ -15,6 +15,7 @@
 
                         <div class="form-group ">
                             <label for="">Username</label>
+                            <input type="hidden" name="donor_id" value="{{$user->id}}">
                             <input type="text" class="form-control" name="user_name" value="{{$user->name}}" readonly>
                         </div>
                         <div class="form-group ">

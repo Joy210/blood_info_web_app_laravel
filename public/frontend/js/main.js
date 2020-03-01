@@ -89,7 +89,7 @@ $(document).ready(function() {
                                    ${user.upazila_name_eng}, ${user.district_name_eng}, ${user.division_name_eng}
                                 </li>
                                 <li class="list-group-item">
-                                    <a class="btn btn-primary btn-sm w-100" id=""  href="/booking-user/${user.mobile_no}">Book Now</a>
+                                    <a class="btn btn-primary btn-sm w-100" href="/booking-user/${user.u_id}">Book Now</a>
                                 </li>
                             </ul>
                         </div> 

@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\DB;
 
 use App\User;
 use Session;
+use App\Notification;
 
 class HomeController extends Controller
 {
@@ -29,6 +30,7 @@ class HomeController extends Controller
     public function index()
     {
         $user_id = Auth::user()->id;
+
         $user = User::where('users.id', $user_id)
                 ->leftjoin('geo_divisions', 'users.division', '=', 'geo_divisions.id')
                 ->leftjoin('geo_districts', 'users.district', '=', 'geo_districts.id')
@@ -37,18 +39,23 @@ class HomeController extends Controller
                 ->first();
         
                 // dd($user->toArray());
+                
+        $notifications = User::where('users.id', $user_id)
+                ->leftjoin('notifications', 'users.id', '=', 'notifications.donor_id')
+                ->get();
 
-        $u_name = Auth::user()->name;
-        $notifications = User::where('users.name', $u_name)
-                ->leftjoin('notifications', 'users.name', '=', 'notifications.user_name')
+        // $donors = Notification::where('booker_id', $user_id)
+        //         ->join('users', 'users.id', '=', 'notifications.donor_id')
+        //         ->get();
+                
+        $donors = Notification::where('booker_id', $user_id)
+                ->join('users', 'users.id', '=', 'notifications.donor_id')
                 ->get();
 
 
-        // $blood_group = DB::table('blood_groups')->where('users.blood_group', 'blood_groups.id')->get();
-        
         // dd($notifications->toArray());
 
-        return view('user.profile', compact('user', 'notifications'));
+        return view('user.profile', compact('user', 'notifications', 'donors'));
     }
 
     public function editProfile($id)

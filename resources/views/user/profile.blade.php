@@ -55,12 +55,42 @@
                     <h4 class="mb-0">Notifications</h4>
                 </div>
                 <div class="card-body p-0">
+
+                    @if($notifications)
                     <ul class="">
+
                         @foreach ($notifications as $item)
                         <li class="">
                             <a class="d-block " href="{{url('show-msg').'/'.$item->id}}" data-toggle="tooltip"
                                 data-placement="top" title="{{$item->message}}">
-                                {{Str::limit($item->message, 40)}}
+                                {{Str::limit($item->message, 30)}}
+                            </a>
+                        </li>
+                        @endforeach
+
+                    </ul>
+                    @endif
+
+                </div>
+            </div>
+
+            <div class="card notification mt-4">
+                <div class="card-header">
+                    <h4 class="mb-0">Send Message To </h4>
+                </div>
+                <div class="card-body p-0">
+                    <ul class="">
+                        {{-- <li><a href="">hello</a></li>
+                        <li><a href="">hello</a></li>
+                        <li><a href="">hello</a></li>
+                        <li><a href="">hello</a></li>
+                        <li><a href="">hello</a></li> --}}
+                        @foreach ($donors as $donor)
+                        <li class="">
+                            <a class="d-block " href="{{url('show-msg').'/'.$donor->id}}" data-toggle="tooltip"
+                                data-placement="top"
+                                title="Status: {{($donor->status == 0)? 'Not Confirmed' : 'Confirmed'}}">
+                                {{ $donor->name }}
                             </a>
                         </li>
                         @endforeach
