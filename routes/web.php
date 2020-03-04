@@ -10,6 +10,9 @@ Route::get('/', function () {
     return view('home');
 });
 
+Route::get('/sortable', 'SortableController@index');
+Route::post('ajax/sortable', 'SortableController@sorted');
+
 Route::get('/', 'GeoLocationController@index');
 Route::get('/get-district/{id}', 'GeoLocationController@get_district')->name('get_district');
 Route::get('/get-upazila/{id}', 'GeoLocationController@get_upazila')->name('get_upazila');

@@ -80,7 +80,7 @@ class HomeController extends Controller
         $validation = $request->validate([
             'name' => 'required',
             'email' => 'required',
-            'mobile_no' => 'required|numeric|digits:11',
+            'mobile_no' => 'required|numeric|unique:mobile_no|digits:11',
             'blood_group' => 'required',
             // 'image' => 'required',
             'division' => 'required',
