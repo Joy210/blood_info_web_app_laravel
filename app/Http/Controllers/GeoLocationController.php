@@ -54,9 +54,10 @@ class GeoLocationController extends Controller
             ->leftjoin('geo_upazilas', 'users.upazila', '=', 'geo_upazilas.id')
             // ->leftjoin('notifications', 'users.id', '=', 'notifications.donor_id')
             ->where('users.id','!=', $user_id)
-            // ->where('notifications.status','>', 0)
+            // ->where('notifications.status','<', 1)
             ->orderBy('users.created_at', 'desc')
             ->get();
+
 
         
         // $users = DB::table('users')

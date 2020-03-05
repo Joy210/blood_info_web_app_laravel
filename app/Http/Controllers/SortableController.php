@@ -8,18 +8,25 @@ use Illuminate\Http\Request;
 
 class SortableController extends Controller
 {
-    public function index(){
 
-        $divisions = DB::table('sortables')->orderBy('position')->get();
+    public function tp_dashboard() {
 
-        return view('sortable.index', compact('divisions'));
+        $divisions = DB::table('sortables')->orderby('position')->get();
+        return view('tp_view.app', compact('divisions'));   
+
     }
 
-    public function sorted(Request $request){
+    
+    public function index() {
 
+        $divisions = DB::table('sortables')->orderby('position')->get();
+        return view('sortable.index', compact('divisions'));
+
+    }
+
+    public function sorted(Request $request) {
 
         // dd($request->positions);
-
 
         foreach ($request->positions as $position) {
 
@@ -32,7 +39,7 @@ class SortableController extends Controller
 
         }
 
-
         return ('Sorted Successfully');
     }
+    
 }

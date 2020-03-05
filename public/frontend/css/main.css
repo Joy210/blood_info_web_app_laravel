@@ -6,12 +6,12 @@ a {
 
 .notification ul {
     margin: 0;
-    padding: 0 34px;
+    padding: 0 20px;
 }
 
 .notification ul li {
     /* padding: 0 20px; */
-    list-style: number;
+    list-style: none;
     line-height: 40px;
     border-bottom: 1px solid #f0f0f0;
     color: #626262;

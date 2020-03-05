@@ -32,7 +32,7 @@
     <div class="main-content container">
 
         <div class="row justify-content-center mt-5">
-            <div class="col-6 col-sm-12">
+            <div class="col-md-6 col-sm-12">
                 <table class="table table-striped table-bordered">
                     <tbody id="tr_sortable">
                         @php $i = 1; @endphp
@@ -47,6 +47,7 @@
                     </tbody>
                 </table>
             </div>
+
         </div>
 
     </div>
@@ -60,6 +61,7 @@
     <script>
         $(document).ready(function(){
             $('#tr_sortable').sortable({
+
                 update: function(event, ui){
                     $(this).children().each(function(index){
                         // console.log(index);
@@ -70,17 +72,22 @@
 
                     saveNewPositions();
                 }
+
             });
 
             function saveNewPositions(){
 
                 var positions = [];
+                // var file_name = [];
 
                 $('.updated').each(function(){
                     positions.push([
-                        $(this).attr('data-index'), 
-                        $(this).attr('data-position')
+                        $(this).attr('data-index'), $(this).attr('data-position')
                     ]);
+
+                    // file_name.push([
+                    //     $(this).attr('data-position'), $(this).attr('file_name')
+                    // ]);
                     
                     $(this).removeClass('updated');
                 })
@@ -101,18 +108,6 @@
             }
         });
     </script>
-
-
-
-
-
-
-
-
-
-
-
-
 
     @stack('javascripts')
 

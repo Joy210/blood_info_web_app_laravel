@@ -58,12 +58,18 @@
 
                     @if($notifications)
                     <ul class="">
+                        @php
+                        $i = 1;
+                        @endphp
 
                         @foreach ($notifications as $item)
                         <li class="">
                             <a class="d-block " href="{{url('show-msg').'/'.$item->id}}" data-toggle="tooltip"
                                 data-placement="top" title="{{$item->message}}">
-                                {{Str::limit($item->message, 30)}}
+                                <i
+                                    class="fa mr-1 {{($item->status != 0)? 'fa-check-circle text-success' : 'fa-times-circle text-danger'}}"></i>
+                                <span> {{Str::limit($item->message, 30)}} </span>
+                                <small class="text-muted float-right"> {{ $item->booking_date }} </small>
                             </a>
                         </li>
                         @endforeach
@@ -80,20 +86,26 @@
                 </div>
                 <div class="card-body p-0">
                     <ul class="">
-                        {{-- <li><a href="">hello</a></li>
-                        <li><a href="">hello</a></li>
-                        <li><a href="">hello</a></li>
-                        <li><a href="">hello</a></li>
-                        <li><a href="">hello</a></li> --}}
+
+                        @php
+                        $i = 1;
+                        @endphp
+
                         @foreach ($donors as $donor)
-                        <li class="">
-                            <a class="d-block " href="{{url('show-msg').'/'.$donor->id}}" data-toggle="tooltip"
-                                data-placement="top"
-                                title="Status: {{($donor->status == 0)? 'Not Confirmed' : 'Confirmed'}}">
-                                {{ $donor->name }}
-                            </a>
+                        <li class="" data-toggle="tooltip" data-placement="top"
+                            title="Status: {{($donor->status != 0)? 'Confirmed' : 'Not Confirmed'}}">
+                            {{-- <a class="d-block " href="{{url('show-msg').'/'.$donor->id}}" data-toggle="tooltip"
+                            data-placement="top"
+                            title="Status: {{($donor->status != 0)? 'Confirmed' : 'Not Confirmed'}}">
+                            {{$i++}}. {{ $donor->name }}
+                            </a> --}}
+                            <i
+                                class="fa mr-1 {{($donor->status != 0)? 'fa-check-circle text-success' : 'fa-times-circle text-danger'}}"></i>
+                            <span> {{ $donor->name }} </span>
+                            <small class="text-muted float-right"> {{ $donor->booking_date }} </small>
                         </li>
                         @endforeach
+
                     </ul>
                 </div>
             </div>
