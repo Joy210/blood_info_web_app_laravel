@@ -1,26 +1,50 @@
 /*
 SQLyog Ultimate v11.11 (64 bit)
-MySQL - 5.5.5-10.4.11-MariaDB 
+MySQL - 5.5.5-10.4.11-MariaDB : Database - blood_app
 *********************************************************************
-*/
+*/
+
 /*!40101 SET NAMES utf8 */;
 
-create table `users` (
-	`àf•` bigint (20),
-	`g•` varchar (765),
-	`Pg•` varchar (765),
-	`ˆg•` varchar (765),
-	`Ðg•` varchar (765),
-	`h•` varchar (765),
-	`Ph•` varchar (765),
-	`˜h•` varchar (765),
-	`àh•` varchar (765),
-	`i•` varchar (765),
-	``i•` varchar (300),
-	`¨i•` timestamp ,
-	`ði•` timestamp 
-); 
-insert into `users` (`id`, `name`, `email`, `mobile_no`, `blood_group`, `image`, `division`, `district`, `upazila`, `password`, `remember_token`, `created_at`, `updated_at`) values('1','S. Rahman','sohanoor404@gmail.com','01922189655','A+','1639275466.jpg','3','34','269','$2y$10$0sW7EdBhoXuslVyGVXdtge6rt3Uz3h.5UeEzHHQeMQjgvP4heuDnC',NULL,'2020-02-13 16:20:44','2020-02-13 16:21:19');
-insert into `users` (`id`, `name`, `email`, `mobile_no`, `blood_group`, `image`, `division`, `district`, `upazila`, `password`, `remember_token`, `created_at`, `updated_at`) values('2','Sohanur Rahman','sohanur1@gmail.com','2','B+','1696078504.jpg','1','6','39','$2y$10$lHiq75rwWmhLw799/Sy8l.LGpNTvZwM6Xk839Xz2asK48.9vRRTZ6',NULL,'2020-02-13 17:52:15','2020-02-13 17:52:50');
-insert into `users` (`id`, `name`, `email`, `mobile_no`, `blood_group`, `image`, `division`, `district`, `upazila`, `password`, `remember_token`, `created_at`, `updated_at`) values('3','Hasib','hasib@gmail.com','3','B+','255023529.png','5','50','374','$2y$10$g6lwj8XKHQWSjcIhhVW2N.bTjL4lYsN/tkKVpKIH4JL7EliIkJpZS',NULL,'2020-02-13 19:57:20','2020-02-13 19:58:09');
-insert into `users` (`id`, `name`, `email`, `mobile_no`, `blood_group`, `image`, `division`, `district`, `upazila`, `password`, `remember_token`, `created_at`, `updated_at`) values('4','Siyam','siyam@gmail.com','4','AB+','629760934.jpg','2','8','51','$2y$10$0ylwbtuJ4teWo3MpvkgWz.4t5IqhhpwBLtg/nWxGxPCooBgUrhWqG',NULL,'2020-02-21 17:52:03','2020-02-21 18:26:16');
+/*!40101 SET SQL_MODE=''*/;
+
+/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+CREATE DATABASE /*!32312 IF NOT EXISTS*/`blood_app` /*!40100 DEFAULT CHARACTER SET utf8mb4 */;
+
+USE `blood_app`;
+
+/*Table structure for table `users` */
+
+DROP TABLE IF EXISTS `users`;
+
+CREATE TABLE `users` (
+  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `status` tinyint(1) NOT NULL,
+  `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `mobile_no` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `blood_group` int(11) DEFAULT NULL,
+  `image` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `division` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `district` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `upazila` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `password` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `remember_token` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `users_email_unique` (`email`),
+  UNIQUE KEY `users_mobile_no_unique` (`mobile_no`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+/*Data for the table `users` */
+
+insert  into `users`(`id`,`name`,`status`,`email`,`mobile_no`,`blood_group`,`image`,`division`,`district`,`upazila`,`password`,`remember_token`,`created_at`,`updated_at`) values (1,'Siyam',0,'siyam@gmail.com',NULL,1,'1677261779.jpg','1','2','8','$2y$10$j1jh6HPID4KrmbSJzuu64Oaopjg5Sfh4HRUSr6cLbDj49sSR8zYrK',NULL,'2020-03-06 01:25:34','2020-03-06 01:29:52'),(2,'Joy',1,'joy@gmail.com',NULL,5,'1392742412.jpg','2','8','51','$2y$10$KEwVPFO5usQ12npbF83iL.YFSWRHkVUyWvj9l3K81yTbE0/nkzhgy',NULL,'2020-03-06 01:30:37','2020-03-06 01:31:19'),(3,'Hasib',1,'hasib@gmail.com',NULL,7,'1607915043.jpg','5','50','374','$2y$10$z6v709nU3mxLqIhmH5wbquso6uXZ.dHxRMq811.B9AA/Z20A95OsW',NULL,'2020-03-06 01:41:42','2020-03-06 03:10:46');
+
+/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
+/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
+/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
+/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;

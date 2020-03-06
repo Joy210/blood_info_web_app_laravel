@@ -1,6 +1,6 @@
 // GET DISTRICTS
-$(document).ready(function () {
-    $("#divisions").on("change", function () {
+$(document).ready(function() {
+    $("#divisions").on("change", function() {
         var division_id = $(this).val();
         // console.log(division_id);
 
@@ -8,13 +8,13 @@ $(document).ready(function () {
             url: "/get-district/" + division_id,
             type: "GET",
             dataType: "JSON",
-            success: function (data) {
+            success: function(data) {
                 // console.log(data);
 
                 var output = "";
 
                 output = data.map(district => {
-                    return `<option value="${ district.id }"> ${ district.district_name_eng } </option>`;
+                    return `<option value="${district.id}"> ${district.district_name_eng} </option>`;
                 });
 
                 $("#districts").html(output);
@@ -23,7 +23,7 @@ $(document).ready(function () {
 
                 // console.log(output);
             },
-            error: function () {
+            error: function() {
                 alert("Data Not Found!");
             }
         });
@@ -32,8 +32,8 @@ $(document).ready(function () {
 // GET DISTRICTS
 
 // GET UPAZILAS
-$(document).ready(function () {
-    $("#districts").on("change", function () {
+$(document).ready(function() {
+    $("#districts").on("change", function() {
         var district_id = $(this).val();
         // console.log(district_id);
 
@@ -41,20 +41,20 @@ $(document).ready(function () {
             url: "/get-upazila/" + district_id,
             type: "GET",
             dataType: "JSON",
-            success: function (data) {
+            success: function(data) {
                 // console.log(data);
 
                 var output = "";
 
                 output = data.map(upazila => {
-                    return `<option value="${ upazila.id }"> ${ upazila.upazila_name_eng } </option>`;
+                    return `<option value="${upazila.id}"> ${upazila.upazila_name_eng} </option>`;
                 });
 
                 $("#upazilas").html(output);
 
                 // console.log(output);
             },
-            error: function () {
+            error: function() {
                 alert("Data Not Found!");
             }
         });
@@ -63,12 +63,15 @@ $(document).ready(function () {
 // GET UPAZILAS
 
 // FETCH USER DATA
-$(document).ready(function () {
+$(document).ready(function() {
     $.ajax({
         url: "/fetch-users/",
         type: "GET",
         dataType: "JSON",
-        success: function (data) {
+        beforeSend: function() {
+            $(".inner-spin").removeClass("d-none");
+        },
+        success: function(data) {
             // console.log(data);
 
             var output = "";
@@ -77,19 +80,19 @@ $(document).ready(function () {
                         <div class="col-4 mb-4">
                             <ul class="list-group">
                                 <li class="list-group-item">
-                                    <span class="font-weight-bold">Name:</span> ${user.name }
+                                    <span class="font-weight-bold">Name:</span> ${user.name}
                                 </li>
                                 <li class="list-group-item">
-                                    <span class="font-weight-bold">E-mail:</span> ${user.email }
+                                    <span class="font-weight-bold">E-mail:</span> ${user.email}
                                 </li>
                                 <li class="list-group-item">
-                                    <span class="font-weight-bold">Blood Group:</span> ${user.blood_group }
+                                    <span class="font-weight-bold">Blood Group:</span> ${user.blood_name}
                                 </li>
                                 <li class="list-group-item">
-                                   ${user.upazila_name_eng }, ${ user.district_name_eng }, ${ user.division_name_eng }
+                                   ${user.upazila_name_eng}, ${user.district_name_eng}, ${user.division_name_eng}
                                 </li>
                                 <li class="list-group-item">
-                                    <a class="btn btn-primary btn-sm w-100" href="/booking-user/${user.u_id }">Book Now</a>
+                                    <a class="btn btn-primary btn-sm w-100" href="/booking-user/${user.u_id}">Book Now</a>
                                 </li>
                             </ul>
                         </div> 
@@ -97,8 +100,8 @@ $(document).ready(function () {
             });
             $("#users-info").html(output);
         },
-        error: function () {
-            alert("Could not find any users!");
+        error: function() {
+            // alert("Could not find any users!");
         }
     });
 });

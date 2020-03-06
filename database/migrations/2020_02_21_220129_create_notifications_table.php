@@ -19,7 +19,7 @@ class CreateNotificationsTable extends Migration
             $table->integer('donor_id');
             $table->date('booking_date')->nullable();
             $table->text('message');
-            $table->boolean('status')->default(0);
+            // $table->boolean('status')->default(0);
             $table->timestamps();
         });
     }

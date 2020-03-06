@@ -41,6 +41,7 @@
             </div>
         </div>
         <div class="card-body">
+
             <div class="row" id="users-info"></div>
             {{-- Show Users Informations... --}}
         </div>
@@ -102,7 +103,7 @@
                     blood_group = '';
                 },
                 error: function(){
-                    alert("User Not Found!");
+                    // alert("User Not Found!");
                 }
             })
 
@@ -183,7 +184,7 @@
                     $('#users-info').html(output);
                 },
                 error: function(){
-                    alert("Could not find any uses!");
+                    // alert("Could not find any uses!");
                 }
             
             })

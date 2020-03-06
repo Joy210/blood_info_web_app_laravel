@@ -52,6 +52,7 @@ class HomeController extends Controller
                 ->join('users', 'users.id', '=', 'notifications.donor_id')
                 ->get();
 
+                // dd($notifications->toArray());
 
         // dd($notifications->toArray());
 
@@ -80,7 +81,7 @@ class HomeController extends Controller
         $validation = $request->validate([
             'name' => 'required',
             'email' => 'required',
-            'mobile_no' => 'required|numeric|unique:mobile_no|digits:11',
+            // 'mobile_no' => 'required|numeric|unique:mobile_no|digits:11',
             'blood_group' => 'required',
             // 'image' => 'required',
             'division' => 'required',
@@ -113,7 +114,7 @@ class HomeController extends Controller
 
 
         $user->name = $request->name;
-        $user->mobile_no = $request->mobile_no;
+        // $user->mobile_no = $request->mobile_no;
         $user->email = $request->email;
         $user->blood_group = $request->blood_group;
         $user->image = $image_name;

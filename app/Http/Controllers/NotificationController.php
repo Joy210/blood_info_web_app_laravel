@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 use App\User;
 use App\Notification;
@@ -49,8 +50,36 @@ class NotificationController extends Controller
 
 
     public function show($id){
+        // dd($id);
+        $test = Notification::find($id);
+
+        // dd($message->toArray());
+                    // ->leftjoin('users', 'users.id', '=', 'notifications.donor_id')
+                    // ->get();
+                    
+
+        // dd($test->toArray());
+        $donor_id = $test->donor_id;
+        // dd($donor_id);
+
+        $message = DB::table('users')
+                   ->where('users.id', $donor_id)
+                   ->leftjoin('notifications', 'users.id', '=', 'notifications.donor_id')
+                   ->first()
+                ;
+
+        // dd($donor_id->toArray());
         
-        $message = Notification::find($id);
+        
+        // $message = Notification::where('id', $id)
+        //             ->leftjoin('users', 'notifications.id', '=', 'users.id')
+        //             ->first()
+        // ;
+
+        // $donor_id = $notification_id->donor_id;
+        // $message = User::where('id', $donor_id)->first();
+
+        // dd($message);
         
         return view('notification.show', compact('message'));
     }
@@ -59,16 +88,23 @@ class NotificationController extends Controller
     public function confirm_booking($id){
         
         $notification_id = Notification::find($id);
+        $donor_id = $notification_id->donor_id;
+        $user_id = User::where('id', $donor_id)->first();
 
-        if ($notification_id->status == 0) {
-            $notification_id->status = 1;
+        // $user_id->status = 1;
+        // dd($user_id->toArray());
+        
+        
+        if ($user_id->status == 0) {
+            $user_id->status = 1;
         } else {
-            $notification_id->status = 0;
+            $user_id->status = 0;
         }
+        
 
-        $notification_id->save();
+        $user_id->save();
 
-        return redirect()->back();
+        return redirect('profile');
 
     }
 }

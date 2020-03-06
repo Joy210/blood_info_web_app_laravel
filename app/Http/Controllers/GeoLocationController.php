@@ -52,24 +52,14 @@ class GeoLocationController extends Controller
             ->leftjoin('geo_divisions', 'users.division', '=', 'geo_divisions.id')
             ->leftjoin('geo_districts', 'users.district', '=', 'geo_districts.id')
             ->leftjoin('geo_upazilas', 'users.upazila', '=', 'geo_upazilas.id')
-            // ->leftjoin('notifications', 'users.id', '=', 'notifications.donor_id')
+            ->leftjoin('notifications', 'users.id', '=', 'notifications.donor_id')
+            ->leftjoin('blood_groups', 'users.blood_group', '=', 'blood_groups.id')
             ->where('users.id','!=', $user_id)
-            // ->where('notifications.status','<', 1)
+            ->where('users.status','<', 1)
             ->orderBy('users.created_at', 'desc')
             ->get();
 
-
-        
-        // $users = DB::table('users')
-        //         ->select(DB::raw('*, users.id as u_id'))
-        //         ->leftjoin('geo_divisions', 'users.division', '=', 'geo_divisions.id')
-        //         ->leftjoin('geo_districts', 'users.district', '=', 'geo_districts.id')
-        //         ->leftjoin('geo_upazilas', 'users.upazila', '=', 'geo_upazilas.id')
-        //         // ->where('users.id','!=', $user_id)
-        //         ->orderBy('users.created_at', 'desc')
-        //         ->get();
-                //  dd($users);
-
+        // dd($users->toArray());
         return json_encode($users);
 
     }
