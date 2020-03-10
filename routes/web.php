@@ -37,3 +37,5 @@ Auth::routes();
 Route::get('/profile', 'HomeController@index')->name('user.profile');
 Route::get('/profile/edit/{id}', 'HomeController@editProfile')->name('user.editProfile');
 Route::post('/profile/update/{id}', 'HomeController@updateProfile')->name('user.updateProfile');
+
+Route::post('profile/blood-donated/{id}', 'HomeController@blood_donated')->name('user.blood_donated');

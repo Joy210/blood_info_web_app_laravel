@@ -114,7 +114,7 @@ class HomeController extends Controller
 
 
         $user->name = $request->name;
-        // $user->mobile_no = $request->mobile_no;
+        $user->mobile_no = $request->mobile_no;
         $user->email = $request->email;
         $user->blood_group = $request->blood_group;
         $user->image = $image_name;
@@ -127,5 +127,22 @@ class HomeController extends Controller
         $user->update();
 
         return redirect('profile');
+    }
+
+
+    public function blood_donated($id){
+
+        $user_id = Auth::user()->id;
+
+
+        $date = date("d/m/Y");
+        echo 'Current Date: '. $date . '<br>';
+        
+        $date = strtotime(date("d/m/Y", strtotime($date)) . "+3 months");
+        $date = date("d/m/Y", $date);
+        echo 'Next 3 month Date: '. $date;
+
+        return redirect()->back();
+
     }
 }
