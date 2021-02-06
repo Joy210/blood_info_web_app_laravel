@@ -7,8 +7,12 @@
             <div class="card">
                 <div class="card-header">
                     Dashboard
-                    <a href="{{url('profile/edit').'/'.Auth::user()->id}}" class="btn btn-primary btn-sm float-right">
+                    <a href="{{url('profile/edit').'/'.Auth::user()->id}}" class="btn btn-warning btn-sm float-right">
                         Edit
+                    </a>
+                    <a href="{{url('profile/blood-donated').'/'.Auth::user()->id}}"
+                        class="btn btn-success btn-sm float-right mr-2">
+                        Blood Donated
                     </a>
                 </div>
 
@@ -16,8 +20,6 @@
                     <div class="row">
                         <div class="col-4">
                             <img src="{{asset('uploads/avatar').'/'.$user->image}}" alt="" class="card-img top">
-
-
                         </div>
                         <div class="col-8">
                             <ul class="list-group">
